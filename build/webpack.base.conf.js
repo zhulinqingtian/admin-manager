@@ -7,6 +7,7 @@
 
 'use strict'
 const path = require('path')
+var webpack = require('webpack')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
@@ -47,11 +48,33 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'common': resolve('src/common')
     }
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    })
+  ],
   // 使用插件配置相应文件的处理方法
   module: {
     rules: [
+      { test: /iview.src.*?js$/, loader: 'babel' },
+      {
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        include: [resolve('src'), resolve('test')],
+        options: {
+          formatter: require('eslint-friendly-formatter')
+        }
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: vueLoaderConfig
+      },
       ...(config.dev.useEslint ? [createLintingRule()] : []),
       { // 使用vue-loader将vue文件转化成js的模块
         test: /\.vue$/,

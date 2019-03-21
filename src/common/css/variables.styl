@@ -1,0 +1,68 @@
+/* color black */
+$black = #262626
+$lightBlack = #333
+
+$black_2b = #2b2b2b  // rgb(43, 43, 43)
+
+/* color gray */
+$background = #f0f2f5
+$gray = #666
+$lightGray = #999
+$extraLightGray = #ddd
+$gray_9b = #9b9b9b // rgb(155,155,155)
+
+$gray_6c = #6c6c6c
+$gray_97 = #979797
+$gray_a5 = #a5a5a5
+$gray_ab = #ababab
+$gray_b5 = #b5b5b5  // rgb(181, 181, 181)
+$gray_ca = #cacaca
+$gray_e = #eee
+$gray_f4 = #f4f4f4
+$gray_fd = #fdfdfd
+$gray_f0 = #f0f0f0
+$gray_f9 = #f9f9f9  // rgb(249, 249, 249)
+$gray_e9 = #e9e9e9  // rgb(233, 233, 233)
+
+
+/* color green */
+$green = #31cf7f  // rgb(49, 207, 127)
+$success = #19be6b // rgb(25, 190, 107)
+
+/* color pink */
+$pink = #fc5a6d /* word rgb(252, 90, 109) */
+$pink_fc = #fc596d /* button */
+$danger = #ed3f14 /* rgb(237, 63, 20) */
+
+/* color blue */
+$primary = #1890FF
+$blue = #4a90e2
+$blue_primary = #2c97de
+
+$orange = #ff9f00  // rgb(255, 159, 0)
+
+/* height */
+$bottomBarHeight = 4.9rem
+
+/* shadow */
+$bottomShadow = 0 .05rem .4rem 0 rgba(0, 0, 0, .0784)
+
+line-clamp(line)
+  overflow hidden
+  display -webkit-box
+  -webkit-line-clamp line
+  -webkit-box-orient vertical
+
+pixel-border(xOffset, yOffset)
+  background-image linear-gradient(180deg, $extraLightGray, $extraLightGray, 50%, transparent 50%)
+  background-size 120% 1px
+  background-repeat no-repeat
+  background-position xOffset yOffset
+  background-origin content-box
+
+// ==========  mixin 文本单行溢出隐藏 ==========
+text-overflow($max-width)
+  max-width: $max-width
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
