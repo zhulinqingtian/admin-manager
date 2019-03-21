@@ -6,100 +6,100 @@
           <div class="layout-logo-left">
             <h3 class="title">AA系统</h3>
           </div>
-          <menu-item name="1-1" class="homepage-menu single-menu-item">
+          <MenuItem name="1-1" class="homepage-menu single-menu-item">
             <router-link to="/view"><p>首页</p></router-link>
-          </menu-item>
-          <sub-menu name="3" class="taobao">
+          </MenuItem>
+          <Submenu name="3" class="taobao">
             <template slot="title">淘宝</template>
-            <menu-group title="管理1" class="slide-toggle-parent">
+            <MenuGroup title="管理1" class="slide-toggle-parent">
               <Icon type="ios-arrow-forward" class="slidedown-icon" @click.native="_toggleSubItems($event)"/>
               <Icon type="ios-arrow-down" class="slideup-icon hide" @click.native="_toggleSubItems($event)"/>
-              <menu-item name="3-1">
+              <MenuItem name="3-1">
                 <router-link to="/view/salesSystem/settingRecharge"><p>自定义充值价格</p></router-link>
-              </menu-item>
-              <menu-item name="3-2" v-if="tbClientSearchShow">
+              </MenuItem>
+              <MenuItem name="3-2" v-if="tbClientSearchShow">
                 <router-link to="/view/salesSystem/clientSearch"><p>客户查询</p></router-link>
-              </menu-item>
-            </menu-group>
-            <menu-group title="管理2" v-if="checkShow" class="check-block-menu slide-toggle-parent">
+              </MenuItem>
+            </MenuGroup>
+            <MenuGroup title="管理2" v-if="checkShow" class="check-block-menu slide-toggle-parent">
               <Badge :count="signatureVerificationCount + templateVerificationCount + smsVerificationCount + invoiceVerificationCount + videoTemplateVerificationCount"
                      overflow-count="99"
                      class="statistic-icon"
               ></Badge>
               <Icon type="ios-arrow-forward" class="slidedown-icon" @click.native="_toggleSubItems($event)"/>
               <Icon type="ios-arrow-down" class="slideup-icon hide" @click.native="_toggleSubItems($event)"/>
-              <menu-item name="3-4">
+              <MenuItem name="3-4">
                 <router-link to="/view/reviewManage/signatureReview">
                   <p>签名审核<Badge :count="signatureVerificationCount" overflow-count="99"></Badge></p>
                 </router-link>
-              </menu-item>
-              <menu-item name="3-5">
+              </MenuItem>
+              <MenuItem name="3-5">
                 <router-link to="/view/reviewManage/signatureRecord"><p>签名备案</p></router-link>
-              </menu-item>
-              <menu-item name="3-6">
+              </MenuItem>
+              <MenuItem name="3-6">
                 <router-link to="/view/reviewManage/templateReview">
                   <p>模板审核<Badge :count="templateVerificationCount" overflow-count="99"></Badge></p>
                 </router-link>
-              </menu-item>
-              <menu-item name="3-7">
+              </MenuItem>
+              <MenuItem name="3-7">
                 <router-link to="/view/reviewManage/messageReview">
                   <p>短信审核<Badge :count="smsVerificationCount" overflow-count="99"></Badge></p>
                 </router-link>
-              </menu-item>
-              <menu-item name="3-8">
+              </MenuItem>
+              <MenuItem name="3-8">
                 <router-link to="/view/reviewManage/videoReview">
                   <p>视频短信审核<Badge :count="videoTemplateVerificationCount" overflow-count="99"></Badge></p>
                 </router-link>
-              </menu-item>
-              <menu-item name="3-9">
+              </MenuItem>
+              <MenuItem name="3-9">
                 <router-link to="/view/reviewManage/invoiceReview">
                   <p>发票审核<Badge :count="invoiceVerificationCount" overflow-count="99"></Badge></p>
                 </router-link>
-              </menu-item>
-            </menu-group>
-            <menu-group title="管理3" v-if="memberInteShow" class="slide-toggle-parent">
+              </MenuItem>
+            </MenuGroup>
+            <MenuGroup title="管理3" v-if="memberInteShow" class="slide-toggle-parent">
               <Icon type="ios-arrow-forward" class="slidedown-icon" @click.native="_toggleSubItems($event)"/>
               <Icon type="ios-arrow-down" class="slideup-icon hide" @click.native="_toggleSubItems($event)"/>
-              <menu-item name="4-1">
+              <MenuItem name="4-1">
                 <router-link to="/view/member"><p>资料</p></router-link>
-              </menu-item>
-              <menu-item name="4-2">
+              </MenuItem>
+              <MenuItem name="4-2">
                 <router-link to="/view/member/creditsExchange"><p>资料1</p></router-link>
-              </menu-item>
-              <menu-item name="4-3">
+              </MenuItem>
+              <MenuItem name="4-3">
                 <router-link to="/view/member/exchangeGoods"><p>资料2</p></router-link>
-              </menu-item>
-              <menu-item name="4-4">
+              </MenuItem>
+              <MenuItem name="4-4">
                 <router-link to="/view/member/exchangeRecord"><p>资料3</p></router-link>
-              </menu-item>
-            </menu-group>
-            <menu-item name="5-1" v-if="noticeManageShow">
+              </MenuItem>
+            </MenuGroup>
+            <MenuItem name="5-1" v-if="noticeManageShow">
               <router-link to="/view/notice/noticeManagement"><p>公告管理</p></router-link>
-            </menu-item>
-          </sub-menu>
-          <sub-menu name="4" class="finance">
+            </MenuItem>
+          </Submenu>
+          <Submenu name="4" class="finance">
             <template slot="title">财务</template>
-            <menu-item name="2-1">
+            <MenuItem name="2-1">
               <router-link to="/view/finance/salesPerformanceStatistics"><p>财务1</p></router-link>
-            </menu-item>
-            <menu-item name="2-2">
+            </MenuItem>
+            <MenuItem name="2-2">
               <router-link to="/view/finance/prerechargeRecord"><p>财务2</p></router-link>
-            </menu-item>
-            <menu-item name="2-3">
+            </MenuItem>
+            <MenuItem name="2-3">
               <router-link to="/view/finance/rebateRecord"><p>财务3</p></router-link>
-            </menu-item>
-          </sub-menu>
-          <sub-menu name="2" class="setting">
+            </MenuItem>
+          </Submenu>
+          <Submenu name="2" class="setting">
             <template slot="title">
               设置
             </template>
-            <menu-item name="2-1">
+            <MenuItem name="2-1">
               <a href="http://console.account.shomop.com/view/setting/accountManage"><p>账号管理</p></a>
-            </menu-item>
-            <menu-item name="2-2">
+            </MenuItem>
+            <MenuItem name="2-2">
               <a href="http://console.account.shomop.com/view/setting/updateLoginPass"><p>修改登录密码</p></a>
-            </menu-item>
-          </sub-menu>
+            </MenuItem>
+          </Submenu>
         </Menu>
       </Col>
       <Col :style="{left: rightLeft}" class="main" id="right-main-content">
