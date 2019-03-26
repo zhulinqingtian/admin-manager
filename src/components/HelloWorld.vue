@@ -1,6 +1,5 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul style="display: none">
       <li>
@@ -84,11 +83,29 @@
 </template>
 
 <script>
+import API from './../axios/api'
+
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      newsListShow: []
+    }
+  },
+  mounted () {
+    this.getNewList()
+  },
+  methods: {
+    getNewList () {
+      API.JH_news({type: top, key: 123456})
+        .then(res => {
+          console.log(res)
+          this.newsListShow = res.articles
+        })
+        .catch(error => {
+          console.log('type:', JSON.parse(error))
+          this.$Message.error(error)
+        })
     }
   }
 }
