@@ -14,7 +14,7 @@ module.exports = {
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8666, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 8100, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true, // 浏览器错误提示
     notifyOnErrors: true, // 跨平台错误提示
@@ -50,7 +50,7 @@ module.exports = {
      * unit的 gzip 命令用来压缩文件，gzip模式下需要压缩的文件的扩展名有js和css
      */
     productionGzip: false,
-      productionGzipExtensions: ['js', 'css'],
-      bundleAnalyzerReport: process.env.npm_config_report
-    }
+    productionGzipExtensions: ['js', 'css'],
+    bundleAnalyzerReport: process.env.npm_config_report
+  }
 }

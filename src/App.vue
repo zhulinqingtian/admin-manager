@@ -1,21 +1,16 @@
 <template>
-  <router-view></router-view>
+  <div id="app">
+    <!--<img src="./assets/logo.png">-->
+    <router-view/>
+  </div>
 </template>
 
-<style lang="stylus">
-
-</style>
-
-<script type="text/babel">
+<script>
 export default {
-  name: 'app',
-  data () {
-    return {
-      iconSize: 20
-    }
-  },
-  created () {},
-  computed: {},
-  methods: {}
+  name: 'App'
 }
 </script>
+
+<style>
+
+</style>

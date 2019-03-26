@@ -125,6 +125,7 @@
 import $ from 'jquery'
 
 export default {
+  name: 'abc',
   data () {
     return {
       username: '张三',
@@ -184,7 +185,7 @@ export default {
     watchPermissions (newList, oldList) {
       if (oldList === newList) return
 
-      const p = this.$store.state.user.permissions
+      const p = this.permissionList
       this.tbClientSearchShow = p && (p.indexOf('shomop_user_getUserByUsername') > -1 && p.indexOf('shomop_admin_countShomopPaymentAndSmsRecord') > -1 && p.indexOf('shomop_admin_listShomopPaymentAndSmsRecord') > -1 && p.indexOf('shomop_admin_listShomopPaymentAndSmsDetail') > -1 && p.indexOf('shomop_admin_saveShomopSmsDetail') > -1)
       this.checkShow = p && (p.indexOf('shomop_signature_list') > -1 || p.indexOf('shomop_signature_audit') > -1 || p.indexOf('shomop_template_get') > -1 || p.indexOf('shomop_message_approve') > -1 || p.indexOf('shomop_crm_videoReview') > -1 || p.indexOf('shomop_invoice_check') > -1)
       this.memberInteShow = p && (p.indexOf('shomop_user_info') > -1 || p.indexOf('shomop_points_listRecordBackstage') > -1 || p.indexOf('shomop_merchandise_list') > -1 || p.indexOf('shomop_exchangeRecord_count') > -1)
@@ -294,7 +295,7 @@ export default {
 
 <!--左侧菜单样式-->
 <style lang="stylus">
-  @import "../common/css/common.styl";
+  @import "../../common/css/common.styl";
   .none
     display none
   .rotate90

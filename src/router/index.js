@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-// import Menu from '@/components/Menu'
+// import MenuLayout from '@/components/MenuLayout'
 // import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
 
-const Menu = r => require.ensure([], () => r(require('@/components/Menu')))
+const MenuLayout = r => require.ensure([], () => r(require('@/components/layout/menuLayout')))
 const HelloWorld = r => require.ensure([], () => r(require('@/components/HelloWorld')))
 
 export default new Router({
@@ -22,7 +22,7 @@ export default new Router({
     {
       path: '/view/home',
       meta: {title: '首页'},
-      component: Menu,
+      component: MenuLayout,
       children: [
         {
           path: '/',

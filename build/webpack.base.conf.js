@@ -7,13 +7,12 @@
 
 'use strict'
 const path = require('path')
-var webpack = require('webpack')
+const webpack = require('webpack')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
-function resolve (dir) {
-  // 拼接出绝对路径
+function resolve (dir) { // 拼接出绝对路径
   return path.join(__dirname, '..', dir)
 }
 
@@ -48,7 +47,6 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      'common': resolve('src/common')
     }
   },
   plugins: [
@@ -61,27 +59,14 @@ module.exports = {
   module: {
     rules: [
       { test: /iview.src.*?js$/, loader: 'babel' },
-      {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: [resolve('src'), resolve('test')],
-        options: {
-          formatter: require('eslint-friendly-formatter')
-        }
-      },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: vueLoaderConfig
-      },
       ...(config.dev.useEslint ? [createLintingRule()] : []),
       { // 使用vue-loader将vue文件转化成js的模块
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig
       },
-      { // js文件需要通过babel-loader进行编译成es5文件以及压缩等操作
+      {
+        // js文件需要通过babel-loader进行编译成es5文件以及压缩等操作
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]

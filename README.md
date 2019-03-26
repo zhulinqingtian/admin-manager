@@ -1,6 +1,6 @@
-# y
+# admin-manager-3
 
-> y
+> A Vue.js project
 
 ## Build Setup
 

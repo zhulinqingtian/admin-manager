@@ -1,7 +1,7 @@
 {
-  "name": "y",
+  "name": "admin-manager-3",
   "version": "1.0.0",
-  "description": "y",
+  "description": "A Vue.js project",
   "author": "zhulinqingtian <1399873403@qq.com>",
   "private": true,
   "scripts": {
@@ -14,11 +14,12 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "vue": "2.4.4",
+    "vue-router": "2.7.0",
+    "vuex": "2.4.0",
     "iview": "2.3.2",
     "jquery": "^3.3.1",
-    "v-distpicker": "^1.1.0",
-    "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "stylus": "0.54.5"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -68,12 +69,13 @@
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
     "uglifyjs-webpack-plugin": "^1.1.1",
-    "url-loader": "^0.5.8",
     "vue-jest": "^1.0.2",
-    "vue-loader": "^13.3.0",
-    "vue-style-loader": "^3.0.1",
-    "vue-template-compiler": "^2.5.2",
-    "webpack": "^3.6.0",
+    "stylus-loader": "3.0.1",
+    "url-loader": "0.5.9",
+    "vue-loader": "13.0.5",
+    "vue-style-loader": "3.0.3",
+    "vue-template-compiler": "2.4.4",
+    "webpack": "3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.0"
