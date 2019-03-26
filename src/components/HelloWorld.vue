@@ -97,13 +97,12 @@ export default {
   },
   methods: {
     getNewList () {
-      API.JH_news({type: top, key: 123456})
+      API.JH_news('type=top&key=123456')
         .then(res => {
           console.log(res)
           this.newsListShow = res.articles
         })
         .catch(error => {
-          console.log('type:', JSON.parse(error))
           this.$Message.error(error)
         })
     }

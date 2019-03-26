@@ -14,6 +14,8 @@ Vue.use(iView)
 
 Vue.config.productionTip = false
 
+require('./mock/mock')
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
