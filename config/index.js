@@ -2,15 +2,20 @@
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
 
-const path = require('path')
+const path = require('path');
+const extend = require('xtend');
 
-module.exports = {
+var config = {
   dev: {
 
     // Paths
     assetsSubDirectory: 'static', // 子目录，一般存放css,js,image等文件
     assetsPublicPath: '/', // 根目录
-    proxyTable: {}, // 可利用该属性解决跨域的问题,配置代理
+    proxyTable: { // 可利用该属性解决跨域的问题,配置代理
+      '/api': 'http://localhost:8100',
+      '/api/manage': 'http://localhost:8100',
+      '/api/client': 'http://localhost:8100'
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -53,4 +58,9 @@ module.exports = {
     productionGzipExtensions: ['js', 'css'],
     bundleAnalyzerReport: process.env.npm_config_report
   }
-}
+};
+
+var configName = process.env.NODE_ENV === 'production' ? 'build' : 'dev';
+global.MANAGE_CONFIG = extend(global.MANAGE_CONFIG, config[configName]);
+
+module.exports = config;

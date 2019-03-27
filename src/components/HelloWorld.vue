@@ -99,7 +99,7 @@ export default {
     getNewList () {
       API.JH_news('type=top&key=123456')
         .then(res => {
-          console.log(res)
+          console.log('JH_news:', res)
           this.newsListShow = res.articles
         })
         .catch(error => {
