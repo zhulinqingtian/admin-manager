@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h2>Essential Links</h2>
+    <h2>Essential Links {{$store.state.name}}</h2>
     <ul style="display: none">
       <li>
         <a
@@ -79,10 +79,15 @@
         </a>
       </li>
     </ul>
+
+    <p>当前值：{{$store.state.count}}</p>
+    <Button type='primary' @click="$store.commit('add')">+</Button>
+    <button type='primary' @click="$store.commit('reduce')">-</button>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 import API from './../axios/api'
 
 export default {
@@ -106,7 +111,8 @@ export default {
           this.$Message.error(error)
         })
     }
-  }
+  },
+  computed: mapState(['count'])
 }
 </script>
 
