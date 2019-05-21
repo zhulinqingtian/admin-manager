@@ -7,6 +7,7 @@ import 'iview/dist/styles/iview.css' // 导入样式
 
 import App from './App'
 import router from './router'
+import store from './store'
 
 Vue.prototype.$http = axios
 
@@ -20,6 +21,7 @@ require('./mock/mock')
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

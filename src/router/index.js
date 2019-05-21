@@ -8,6 +8,7 @@ Vue.use(Router)
 
 const MenuLayout = r => require.ensure([], () => r(require('@/components/layout/menuLayout')))
 const HelloWorld = r => require.ensure([], () => r(require('@/components/HelloWorld')))
+const OptimizeVuex = r => require.ensure([], () => r(require('@/components/optimizeVuex')))
 
 export default new Router({
   routes: [
@@ -32,6 +33,11 @@ export default new Router({
           component: HelloWorld
         }
       ]
+    },
+    {
+      path: '/view/optimizeVuex',
+      name: 'OptimizeVuex',
+      component: OptimizeVuex
     }
   ]
 })

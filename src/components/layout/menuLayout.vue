@@ -30,30 +30,15 @@
               <Icon type="ios-arrow-down" class="slideup-icon hide" @click.native="_toggleSubItems($event)"/>
               <MenuItem name="3-4">
                 <router-link to="/view/reviewManage/signatureReview">
-                  <p>签名审核<Badge :count="signatureVerificationCount" overflow-count="99"></Badge></p>
+                  <p>审核1<Badge count="2" overflow-count="99"></Badge></p>
                 </router-link>
               </MenuItem>
               <MenuItem name="3-5">
-                <router-link to="/view/reviewManage/signatureRecord"><p>签名备案</p></router-link>
+                <router-link to="/view/reviewManage/signatureRecord"><p>审核2</p></router-link>
               </MenuItem>
               <MenuItem name="3-6">
                 <router-link to="/view/reviewManage/templateReview">
-                  <p>模板审核<Badge :count="templateVerificationCount" overflow-count="99"></Badge></p>
-                </router-link>
-              </MenuItem>
-              <MenuItem name="3-7">
-                <router-link to="/view/reviewManage/messageReview">
-                  <p>短信审核<Badge :count="smsVerificationCount" overflow-count="99"></Badge></p>
-                </router-link>
-              </MenuItem>
-              <MenuItem name="3-8">
-                <router-link to="/view/reviewManage/videoReview">
-                  <p>视频短信审核<Badge :count="videoTemplateVerificationCount" overflow-count="99"></Badge></p>
-                </router-link>
-              </MenuItem>
-              <MenuItem name="3-9">
-                <router-link to="/view/reviewManage/invoiceReview">
-                  <p>发票审核<Badge :count="invoiceVerificationCount" overflow-count="99"></Badge></p>
+                  <p>审核3<Badge count="5" overflow-count="99"></Badge></p>
                 </router-link>
               </MenuItem>
             </MenuGroup>
