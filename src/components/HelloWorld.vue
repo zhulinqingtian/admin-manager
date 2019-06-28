@@ -18,20 +18,18 @@
       版本：{{plat && plat.version}}
       更新时间： {{plat && plat.updateTime}}
     </div>
+
     <router-link to="/view/optimizeVuex">优化过后的vuex的使用</router-link>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import API from './../axios/api'
 import commonMethods from '../assets/utils/commonMethods.js'
 
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      newsListShow: [],
       currentUser: {
         name: 'test',
         role: 'test01'
@@ -52,20 +50,8 @@ export default {
   watch: {
     user: 'changeUser' // 检测user对象变化，检测方法：changeUser
   },
-  mounted () {
-    this.getNewList()
-  },
+  mounted () {},
   methods: {
-    getNewList () {
-      API.JH_news('type=top&key=123456')
-        .then(res => {
-          console.log(res)
-          this.newsListShow = res.articles
-        })
-        .catch(error => {
-          this.$Message.error(error)
-        })
-    },
     changeUser (user) {
       if (user && !commonMethods.isEmptyObject(user)) {
         this.currentUser = user
@@ -106,5 +92,13 @@ li {
 }
 a {
   color: #42b983;
+}
+.news-list-ct{
+  width: 1200px;
+  padding: 24px;
+}
+.news-list-ct li{
+  display: block;
+  line-height: 40px;
 }
 </style>

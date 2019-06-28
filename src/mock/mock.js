@@ -3,7 +3,7 @@ import DATA from './data'
 const Mock = require('mockjs')
 // 获取 mock.Random 对象
 const Random = Mock.Random
-// mock一组数据
+// mock一组新闻数据
 const produceNewsData = function () {
   let articles = []
   for (let i = 0; i < 100; i++) {
@@ -17,10 +17,10 @@ const produceNewsData = function () {
   }
 
   return {
-    articles: articles
+    data: articles
   }
 }
 
-console.log('produceNewsData:', produceNewsData)
 // Mock.mock( url, post/get , 返回的数据)；
-Mock.mock('/news/index', 'post', DATA.news)
+Mock.mock('/news/index', 'post', produceNewsData)
+Mock.mock('/get/commodity/list', 'post', DATA.commodity)
