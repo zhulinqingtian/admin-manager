@@ -152,13 +152,6 @@ export default {
       if (animationType === 'open') {
         parentListItem.addClass('empty-box')
 
-        /* Velocity(el, {
-          opacity: 1
-        }, {
-          duration: 1000,
-          complete: done
-        }) */
-
         Velocity(_this.$detailCt, {
           'top': topSelected,
           'left': leftSelected,
