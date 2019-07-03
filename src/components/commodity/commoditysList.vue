@@ -1,29 +1,30 @@
 <template>
   <div class="hello">
-    <div class="news-list-ct">
-      <ul>
-        <li>商品列表</li>
-        <li v-for="(list, index) in commodityList" :key="index" :data-id="list.id">
-          <a href="">{{list.title}}</a>
-        </li>
-      </ul>
+    <div class="goods-list-ct">
+      <p>商品列表</p>
+      <GoodsDetailC :data="paramList"/>
     </div>
   </div>
 </template>
 
 <script>
-import API from './../../axios/api'
+import API from '../../axios/api'
+import GoodsDetailC from '../common-component/common-component'
 
 export default {
   name: 'commodity-list',
   data () {
     return {
-      commodityList: []
+      commodityList: [],
+      paramList: []
     }
   },
   computed: {},
   mounted () {
     this._getCommodityList()
+  },
+  watch: {
+    commodityList: 'changeCommodityList'
   },
   methods: {
     _getUserInfo () {
@@ -33,13 +34,19 @@ export default {
     _getCommodityList () {
       API.getCommodityList({})
         .then(res => {
-          console.log('res.data:', res.data);
+          console.log('res.data:', res.data)
           this.commodityList = res.data
         })
         .catch(error => {
           this.$Message.error(error)
         })
+    },
+    changeCommodityList (list) {
+      this.paramList = list
     }
+  },
+  components: {
+    GoodsDetailC
   }
 }
 </script>
@@ -59,13 +66,5 @@ export default {
   }
   a {
     color: #42b983;
-  }
-  .news-list-ct{
-    width: 1200px;
-    padding: 24px;
-  }
-  .news-list-ct li{
-    display: block;
-    line-height: 40px;
   }
 </style>

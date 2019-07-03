@@ -12,7 +12,7 @@ const OptimizeVuex = r => require.ensure([], () => r(require('@/components/optim
 
 const NewLists = r => require.ensure([], () => r(require('@/components/news/newsList')))
 
-const CommodityList = r => require.ensure([], () => r(require('@/components/commodity/commodityList')))
+const CommodityList = r => require.ensure([], () => r(require('@/components/commodity/commoditysList')))
 
 export default new Router({
   routes: [
