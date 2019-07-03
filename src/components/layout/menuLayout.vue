@@ -10,36 +10,23 @@
             <router-link to="/view"><p>首页</p></router-link>
           </MenuItem>
           <Submenu name="3" class="taobao">
-            <template slot="title">淘宝</template>
-            <MenuGroup title="管理1" class="slide-toggle-parent">
+            <template slot="title">后台</template>
+            <MenuGroup title="新闻管理" class="slide-toggle-parent">
               <Icon type="ios-arrow-forward" class="slidedown-icon" @click.native="_toggleSubItems($event)"/>
               <Icon type="ios-arrow-down" class="slideup-icon hide" @click.native="_toggleSubItems($event)"/>
               <MenuItem name="3-1">
-                <router-link to="/view/salesSystem/settingRecharge"><p>自定义充值价格</p></router-link>
-              </MenuItem>
-              <MenuItem name="3-2" v-if="tbClientSearchShow">
-                <router-link to="/view/salesSystem/clientSearch"><p>客户查询</p></router-link>
+                <router-link to="/view/news"><p>新闻列表</p></router-link>
               </MenuItem>
             </MenuGroup>
-            <MenuGroup title="管理2" v-if="checkShow" class="check-block-menu slide-toggle-parent">
+            <MenuGroup title="商品管理" v-if="checkShow" class="check-block-menu slide-toggle-parent">
               <Badge :count="signatureVerificationCount + templateVerificationCount + smsVerificationCount + invoiceVerificationCount + videoTemplateVerificationCount"
                      overflow-count="99"
                      class="statistic-icon"
               ></Badge>
               <Icon type="ios-arrow-forward" class="slidedown-icon" @click.native="_toggleSubItems($event)"/>
               <Icon type="ios-arrow-down" class="slideup-icon hide" @click.native="_toggleSubItems($event)"/>
-              <MenuItem name="3-4">
-                <router-link to="/view/reviewManage/signatureReview">
-                  <p>审核1<Badge count="2" overflow-count="99"></Badge></p>
-                </router-link>
-              </MenuItem>
-              <MenuItem name="3-5">
-                <router-link to="/view/reviewManage/signatureRecord"><p>审核2</p></router-link>
-              </MenuItem>
-              <MenuItem name="3-6">
-                <router-link to="/view/reviewManage/templateReview">
-                  <p>审核3<Badge count="5" overflow-count="99"></Badge></p>
-                </router-link>
+              <MenuItem name="3-2" v-if="tbClientSearchShow">
+                <router-link to="/view/commodity"><p>商品列表</p></router-link>
               </MenuItem>
             </MenuGroup>
             <MenuGroup title="管理3" v-if="memberInteShow" class="slide-toggle-parent">

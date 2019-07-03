@@ -43,5 +43,8 @@ export function fetch (url, params = {}, method = 'get') {
 export default {
   JH_news (params) {
     return fetch('/news/index', params, 'get')
+  },
+  getCommodityList (params) {
+    return fetch('/get/commodity/list', params, 'get')
   }
 }
