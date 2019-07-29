@@ -60,6 +60,15 @@ module.exports = {
     rules: [
       { test: /iview.src.*?js$/, loader: 'babel' },
       ...(config.dev.useEslint ? [createLintingRule()] : []),
+      // {
+      //   test: /.css$/,    // 是一个正则,处理后缀名为css的文件,匹配到的文件名后缀
+      //   loaders: ["style-loader", "css-loader"],  // 放加载器,一个加载器写成字符串,两个就写成数组
+      //   exclude: "/node_modules" // 要排除的文件夹
+      //   // webpack在打包过程中，遇到后缀为css的文件，就会使用style-loader和css-loader去加载这个文件。
+      //   // 最后计算完的css，将会使用style-loader生成一个style标签（内容为最终解析完的css代码），放到head标签里。
+      //   // 注意：loader是有顺序的，webpack是先将所有css模块依赖解析完得到结果再创建style标签。
+      //   // 因此应该把style-loader放在css-loader的前面（webpack loader的执行顺序是从右到左）
+      // },
       { // 使用vue-loader将vue文件转化成js的模块
         test: /\.vue$/,
         loader: 'vue-loader',
