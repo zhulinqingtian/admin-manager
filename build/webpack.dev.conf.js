@@ -21,7 +21,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   // 增强调试
   devtool: config.dev.devtool,
 
-  // these devServer options should be customized in /config/index.js
+  // these devServer options should be customized in /config/router.js
   devServer: {
     clientLogLevel: 'warning', // 控制台显示的选项有none, error, warning 或者 info
     historyApiFallback: {
