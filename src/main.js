@@ -6,7 +6,7 @@ import iView from 'iview' // 导入组件库
 import 'iview/dist/styles/iview.css' // 导入样式
 
 import App from './App'
-import router from './router'
+import router from './router/index'
 import store from './store'
 
 Vue.prototype.$http = axios

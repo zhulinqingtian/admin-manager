@@ -2,6 +2,8 @@
 
 > A Vue.js project
 
+[token验证](https://www.cnblogs.com/chenwenhao/p/10466774.html)
+
 # Velocity插件
 [原文地址](https://github.com/julianshapiro/velocity/wiki)
 ##1.插件介绍
@@ -55,7 +57,7 @@ easing: "easeInSine"
 
 FPS Limit
 ```
-Velocity.defaults.fpsLimit = 30; // 更改Velocity更新动画的每秒的最大次数（默认是60） 
+Velocity.defaults.fpsLimit = 30; // 更改Velocity更新动画的每秒的最大次数（默认是60）
 ```
 
 Loop：以指定动画应在调用的属性映射中的值与调用之前的元素值之间交替的次数
