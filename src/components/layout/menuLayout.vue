@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div>11111</div>
+  <!--<div>
     <Row>
       <Col span="8" :width="headerWidth">
         <Menu :open-names="['1']" accordion id="left-menu" :width="headerWidth">
@@ -66,10 +67,10 @@
               设置
             </template>
             <MenuItem name="2-1">
-              <a href="http://console.account.shomop.com/view/setting/accountManage"><p>账号管理</p></a>
+              <a href="http://console.account.gxq.com/view/setting/accountManage"><p>账号管理</p></a>
             </MenuItem>
             <MenuItem name="2-2">
-              <a href="http://console.account.shomop.com/view/setting/updateLoginPass"><p>修改登录密码</p></a>
+              <a href="http://console.account.gxq.com/view/setting/updateLoginPass"><p>修改登录密码</p></a>
             </MenuItem>
           </Submenu>
         </Menu>
@@ -91,7 +92,7 @@
         </div>
       </Col>
     </Row>
-  </div>
+  </div>-->
 </template>
 <script>
 import $ from 'jquery'
@@ -158,11 +159,11 @@ export default {
       if (oldList === newList) return
 
       const p = this.permissionList
-      this.tbClientSearchShow = p && (p.indexOf('shomop_user_getUserByUsername') > -1 && p.indexOf('shomop_admin_countShomopPaymentAndSmsRecord') > -1 && p.indexOf('shomop_admin_listShomopPaymentAndSmsRecord') > -1 && p.indexOf('shomop_admin_listShomopPaymentAndSmsDetail') > -1 && p.indexOf('shomop_admin_saveShomopSmsDetail') > -1)
-      this.checkShow = p && (p.indexOf('shomop_signature_list') > -1 || p.indexOf('shomop_signature_audit') > -1 || p.indexOf('shomop_template_get') > -1 || p.indexOf('shomop_message_approve') > -1 || p.indexOf('shomop_crm_videoReview') > -1 || p.indexOf('shomop_invoice_check') > -1)
-      this.memberInteShow = p && (p.indexOf('shomop_user_info') > -1 || p.indexOf('shomop_points_listRecordBackstage') > -1 || p.indexOf('shomop_merchandise_list') > -1 || p.indexOf('shomop_exchangeRecord_count') > -1)
-      this.noticeManageShow = p && (p.indexOf('shomop_crm_noticeManagement') > -1)
-      this.clientManageShow = p && (p.indexOf('shomop_recharge_listCustomPriceByNick') > -1)
+      this.tbClientSearchShow = p && (p.indexOf('gxq_user_getUserByUsername') > -1 && p.indexOf('gxq_admin_countgxqPaymentAndSmsRecord') > -1 && p.indexOf('gxq_admin_listgxqPaymentAndSmsRecord') > -1 && p.indexOf('gxq_admin_listgxqPaymentAndSmsDetail') > -1 && p.indexOf('gxq_admin_savegxqSmsDetail') > -1)
+      this.checkShow = p && (p.indexOf('gxq_signature_list') > -1 || p.indexOf('gxq_signature_audit') > -1 || p.indexOf('gxq_template_get') > -1 || p.indexOf('gxq_message_approve') > -1 || p.indexOf('gxq_crm_videoReview') > -1 || p.indexOf('gxq_invoice_check') > -1)
+      this.memberInteShow = p && (p.indexOf('gxq_user_info') > -1 || p.indexOf('gxq_points_listRecordBackstage') > -1 || p.indexOf('gxq_merchandise_list') > -1 || p.indexOf('gxq_exchangeRecord_count') > -1)
+      this.noticeManageShow = p && (p.indexOf('gxq_crm_noticeManagement') > -1)
+      this.clientManageShow = p && (p.indexOf('gxq_recharge_listCustomPriceByNick') > -1)
     },
 
     _logout () {}
@@ -185,21 +186,21 @@ export default {
     z-index 100
     overflow visible
   .layout-logo-left
-    position: relative;
-    height: 60px;
-    margin-bottom: 5px;
+    position: relative
+    height: 60px
+    margin-bottom: 5px
     overflow hidden
     img
-      position: absolute;
-      height: 30px;
-      left: 10px;
-      top: 15px;
+      position: absolute
+      height: 30px
+      left: 10px
+      top: 15px
     h3
-      margin-left: 50px;
-      padding-left: 20px;
-      color: #fff;
-      line-height: 60px;
-      width: 140px;
+      margin-left: 50px
+      padding-left: 20px
+      color: #fff
+      line-height: 60px
+      width: 140px
       white-space nowrap
       text-overflow ellipsis
 
@@ -213,44 +214,44 @@ export default {
     &.header-text-hide
       left 208px
   .top-content
-    position:absolute;
-    top:0;
-    left:0px;
-    right:0;
-    height:60px;
-    line-height: 50px;
-    box-shadow: 0 2px 1px 0 #ccc;
-    background-color:#fff;
-    z-index:100;
+    position:absolute
+    top:0
+    left:0px
+    right:0
+    height:60px
+    line-height: 50px
+    box-shadow: 0 2px 1px 0 #ccc
+    background-color:#fff
+    z-index:100
     transition left .5s
   .account-right
-    width: 300px;
-    height: 60px;
-    float: right;
-    font-size: 16px;
-    line-height: 60px;
-    text-align: right;
-    padding-right: 22px;
+    width: 300px
+    height: 60px
+    float: right
+    font-size: 16px
+    line-height: 60px
+    text-align: right
+    padding-right: 22px
   .account-right span
-    font-size: 16px;
+    font-size: 16px
   .account-right ivu-icon-power
-    font-size: 24px !important;
+    font-size: 24px !important
 </style>
 <style lang="stylus">
   .special-input{
-    width 200px;
-    height:32px;
-    border-radius 4px;
-    padding-left 10px;
-    outline:none;
-    border:1px solid #ccc;
-    margin-right: 12px;
+    width 200px
+    height:32px
+    border-radius 4px
+    padding-left 10px
+    outline:none
+    border:1px solid #ccc
+    margin-right: 12px
   }
   .special-input:focus{
-    border:1px solid dodgerblue;
+    border:1px solid dodgerblue
   }
   .ivu-input-wrapper .ivu-input {
-    background-color: rgb(250, 255, 189)!important;
+    background-color: rgb(250, 255, 189)!important
   }
   .ivu-badge
     display inline-block
@@ -267,7 +268,7 @@ export default {
 
 <!--左侧菜单样式-->
 <style lang="stylus">
-  @import "../../common/css/common.styl";
+  @import "../../common/css/common.styl"
   .none
     display none
   .rotate90
@@ -293,7 +294,7 @@ export default {
       padding-left 13px
     .ivu-menu-item-group-title
       padding-left 48px
-      background-color: #495060;
+      background-color: #495060
       color #fff
       height 40px
       line-height 40px
@@ -306,13 +307,13 @@ export default {
         padding-left 32px
         background-color #363e4f
       .ivu-menu-item-active.ivu-menu-item-selected
-        background-color: #3596fc;
+        background-color: #3596fc
         color #fff
         border-right-width 0px
     .homepage-menu
       &.single-menu-item
         &.ivu-menu-item-active.ivu-menu-item-selected
-          background-color: #3596fc;
+          background-color: #3596fc
           color #fff
           border-right-width 0px
       a
@@ -329,8 +330,8 @@ export default {
       p
         height 40px
   .ivu-menu-submenu-title
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    white-space: nowrap
+    text-overflow: ellipsis
   .taobao, .setting, .finance
     .ivu-menu
       .ivu-menu-item
@@ -346,11 +347,11 @@ export default {
         .ivu-menu-submenu-title
           &+.ivu-menu
             display block!important
-            position: absolute;
-            left: 60px;
-            top: 0px;
-            z-index: 100;
-            width: 200px;
+            position: absolute
+            left: 60px
+            top: 0px
+            z-index: 100
+            width: 200px
             height 0
 </style>
 
@@ -358,15 +359,15 @@ export default {
   .slide-toggle-parent
     position relative
     .ivu-icon
-      position: absolute;
-      right: 0px;
-      top: 0px;
-      width: 100%;
-      text-align: right;
-      padding-right: 26px;
+      position: absolute
+      right: 0px
+      top: 0px
+      width: 100%
+      text-align: right
+      padding-right: 26px
       transition all 0.2s linear
-      cursor: pointer;
-      line-height: 40px;
+      cursor: pointer
+      line-height: 40px
     .ivu-icon
       &.hide
         display none

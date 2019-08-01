@@ -230,10 +230,10 @@ export default {
 </script>
 
 <style scoped>
-  @import '../../common/css/reset.css';
-  @import '../../common/css/style.css';
+  @import '../../common/css/reset.css'
+  @import '../../common/css/style.css'
 
   .cd-item:hover .cd-trigger{
-    opacity: 1!important;
+    opacity: 1!important
   }
 </style>

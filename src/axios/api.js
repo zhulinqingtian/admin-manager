@@ -26,7 +26,7 @@ export function fetch (url, params = {}, method = 'get') {
     } else {
       config.data = params
       config.headers = {
-        'Content-Type': 'application/json;charset=UTF-8'
+        'Content-Type': 'application/jsoncharset=UTF-8'
       }
     }
 
