@@ -1,6 +1,5 @@
 <template>
-  <div>11111</div>
-  <!--<div>
+  <div>
     <Row>
       <Col span="8" :width="headerWidth">
         <Menu :open-names="['1']" accordion id="left-menu" :width="headerWidth">
@@ -92,7 +91,7 @@
         </div>
       </Col>
     </Row>
-  </div>-->
+  </div>
 </template>
 <script>
 import $ from 'jquery'

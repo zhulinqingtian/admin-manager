@@ -34,6 +34,9 @@ exports.setup = function setup (app) {
     next()
   }, Upload.proxy)
 
+  // todo 上传多个
+  app.post(['/api/test/gxq/upload_imgs'], upload.single('file'), Upload.proxy)
+
   // 上传积分文件
   router.post('', upload.single('file'), Upload.proxy)
 

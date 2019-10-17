@@ -4,6 +4,16 @@ const OptimizeVuex = r => require.ensure([], () => r(require('@/components/optim
 const NewLists = r => require.ensure([], () => r(require('@/components/news/newsList')))
 const CommodityList = r => require.ensure([], () => r(require('@/components/commodity/commoditysList')))
 
+/**
+ * banner管理
+ */
+const BannerManagement = r => require.ensure([], () => r(require('@/components/manager/BannerManagement')))
+
+/**
+ * 测试部分
+ */
+const TestUpload = r => require.ensure([], () => r(require('@/components/test/testUpload')))
+
 export const appRouter = [
   {
     path: '/',
@@ -59,6 +69,17 @@ export const appRouter = [
     path: '/view/optimizeVuex',
     name: 'OptimizeVuex',
     component: OptimizeVuex
+  },
+  {
+    path: '/view/bannerManager',
+    name: 'bannerManager',
+    component: BannerManagement
+  },
+  {
+    path: '/view/testUpload',
+    title: '测试上传',
+    name: 'TestUpload',
+    component: TestUpload
   }
 ]
 

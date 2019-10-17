@@ -11,7 +11,10 @@ var config = {
     // Paths
     assetsSubDirectory: 'static', // 子目录，一般存放css,js,image等文件
     assetsPublicPath: '/', // 根目录
-    proxyTable: {}, // 可利用该属性解决跨域的问题,配置代理
+    homePage: 'http://localhost:8100',
+    proxyTable: { // 可利用该属性解决跨域的问题,配置代理
+      '/api/test': 'http://localhost:9998'
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -22,7 +25,6 @@ var config = {
     poll: false, // 使用文件系统(file system)获取文件改动的通知devServer.watchOptions
     useEslint: true,
     showEslintErrorsInOverlay: false,
-    homePage: 'localhost:3000',
     env: {NODE_ENV: '"development"'},
 
     /**
@@ -54,8 +56,7 @@ var config = {
      */
     productionGzip: false,
     productionGzipExtensions: ['js', 'css'],
-    bundleAnalyzerReport: process.env.npm_config_report,
-    env: {NODE_ENV: '"product"'}
+    bundleAnalyzerReport: process.env.npm_config_report
   }
 }
 

@@ -5,8 +5,7 @@ var rb = require('./response-builder')
 
 var config = global.My
 
-var apiServerUrl = config.proxyTable['/api']
-var apiAdminUrl = config.proxyTable['/admin']
+var apiServerUrl = config.proxyTable['/api/test']
 
 function isJson (req) {
   var str = req.headers['Content-Type'] || req.headers['content-type'] || ''
@@ -24,8 +23,8 @@ exports.proxy = function (req, res) {
   }
 
   // 代理跳转
-  if (req.path.indexOf('/api/admin') === 0) {
-    options.url = apiAdminUrl + req.path.replace('/api/admin', '/api')
+  if (req.path.indexOf('/api/test') === 0) {
+    options.url = apiServerUrl + req.path.replace('/api/test', '')
   }
 
   if (req.user) {
