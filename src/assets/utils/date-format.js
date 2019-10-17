@@ -3,7 +3,7 @@
  */
 function dateFormat (date, format = 'YYYY-MM-DD hh:mm:ss') {
   if (+date === 0 || Number.isNaN(+date)) {
-    // console.error(`invalid date: ${date}`);
+    // console.error(`invalid date: ${date}`)
     return '--'
   }
 

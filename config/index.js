@@ -3,8 +3,9 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
+const extend = require('xtend')
 
-module.exports = {
+var config = {
   dev: {
 
     // Paths
@@ -21,6 +22,8 @@ module.exports = {
     poll: false, // 使用文件系统(file system)获取文件改动的通知devServer.watchOptions
     useEslint: true,
     showEslintErrorsInOverlay: false,
+    homePage: 'localhost:3000',
+    env: {NODE_ENV: '"development"'},
 
     /**
      * Source Maps
@@ -51,6 +54,12 @@ module.exports = {
      */
     productionGzip: false,
     productionGzipExtensions: ['js', 'css'],
-    bundleAnalyzerReport: process.env.npm_config_report
+    bundleAnalyzerReport: process.env.npm_config_report,
+    env: {NODE_ENV: '"product"'}
   }
 }
+
+var mode = process.env.NODE_ENV === 'production' ? 'build' : 'dev'
+global.My = extend(global.My, config[mode])
+
+module.exports = config

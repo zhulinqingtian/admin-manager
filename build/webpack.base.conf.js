@@ -16,17 +16,6 @@ function resolve (dir) { // 拼接出绝对路径
   return path.join(__dirname, '..', dir)
 }
 
-const createLintingRule = () => ({
-  test: /\.(js|vue)$/,
-  loader: 'eslint-loader',
-  enforce: 'pre',
-  include: [resolve('src'), resolve('test')],
-  options: {
-    formatter: require('eslint-friendly-formatter'),
-    emitWarning: !config.dev.showEslintErrorsInOverlay
-  }
-})
-
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: { // 配置入口，默认为单页面所以只有app一个入口
@@ -47,6 +36,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'jquery': 'jquery'
     }
   },
   plugins: [
@@ -59,7 +49,6 @@ module.exports = {
   module: {
     rules: [
       { test: /iview.src.*?js$/, loader: 'babel' },
-      ...(config.dev.useEslint ? [createLintingRule()] : []),
       // {
       //   test: /.css$/,    // 是一个正则,处理后缀名为css的文件,匹配到的文件名后缀
       //   loaders: ["style-loader", "css-loader"],  // 放加载器,一个加载器写成字符串,两个就写成数组
@@ -78,7 +67,7 @@ module.exports = {
         // js文件需要通过babel-loader进行编译成es5文件以及压缩等操作
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+        include: [resolve('src'), resolve('test')]
       },
       { // 图片、音像、字体都使用url-loader进行处理，超过10000会编译成base64
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -105,18 +94,5 @@ module.exports = {
         }
       }
     ]
-  },
-  node: {
-    // prevent webpack from injecting useless setImmediate polyfill because Vue
-    // source contains it (although only uses it if it's native).
-    // 以下选项是Node.js全局变量或模块，这里主要是防止webpack注入一些Node.js的东西到vue中
-    setImmediate: false,
-    // prevent webpack from injecting mocks to Node native modules
-    // that does not make sense for the client
-    dgram: 'empty',
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty',
-    child_process: 'empty'
   }
 }

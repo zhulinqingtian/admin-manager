@@ -5,7 +5,7 @@ import axios from 'axios'
 import iView from 'iview' // 导入组件库
 import 'iview/dist/styles/iview.css' // 导入样式
 
-import App from './App'
+import App from './App.vue'
 import router from './router/index'
 import store from './store'
 

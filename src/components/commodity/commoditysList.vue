@@ -9,7 +9,7 @@
 
 <script>
 import API from '../../axios/api'
-import GoodsDetailC from '../common-component/common-component'
+import GoodsDetailC from '../common-component/common-component.vue'
 
 export default {
   name: 'commodity-list',
@@ -58,11 +58,11 @@ export default {
   }
   ul {
     list-style-type: none;
-    padding: 0;
+    padding: 0
   }
   li {
     display: inline-block;
-    margin: 0 10px;
+    margin: 0 10px
   }
   a {
     color: #42b983;

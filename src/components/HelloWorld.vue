@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import commonMethods from '../assets/utils/commonMethods.js'
+import commonMethods from '../assets/utils/commonMethods'
 
 export default {
   name: 'HelloWorld',

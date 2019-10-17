@@ -1,51 +1,21 @@
-'use strict';
-const utils = require('./utils');
-const webpack = require('webpack');
-const config = require('../config');
-const merge = require('webpack-merge'); // 通过webpack-merge实现webpack.dev.conf.js对wepack.base.config.js的继承
-const path = require('path');
-const baseWebpackConfig = require('./webpack.base.conf');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin'); // 美化webpack的错误信息和日志的插件
-const portfinder = require('portfinder'); // 查看空闲端口位置，默认情况下搜索8000这个端口
+'use strict'
+const utils = require('./utils')
+const webpack = require('webpack')
+const config = require('../config')
+const merge = require('webpack-merge') // 通过webpack-merge实现webpack.dev.conf.js对wepack.base.config.js的继承
+const path = require('path')
+const baseWebpackConfig = require('./webpack.base.conf')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin') // 美化webpack的错误信息和日志的插件
 
-const HOST = process.env.HOST; // processs为node的一个全局对象,获取当前程序的环境变量，即host
-const PORT = process.env.PORT && Number(process.env.PORT);
-
-const devWebpackConfig = merge(baseWebpackConfig, {
+module.exports  = merge(baseWebpackConfig, {
   module: {
     // 规则是工具utils中处理出来的styleLoaders，生成了css，less,postcss等规则
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
   },
   // 增强调试
   devtool: config.dev.devtool,
-
-  // these devServer options should be customized in /config/router.js
-  devServer: {
-    clientLogLevel: 'warning', // 控制台显示的选项有none, error, warning 或者 info
-    historyApiFallback: {
-      rewrites: [
-        // 当使用 HTML5 History API 时，任意的 404 响应都可能需要被替代为 index.html
-        { from: /.*/, to: path.posix.join(config.dev.assetsPublicPath, 'index.html') },
-      ],
-    },
-    hot: true, // 热加载
-    contentBase: false, // since we use CopyWebpackPlugin.
-    compress: true, // 压缩
-    host: HOST || config.dev.host,
-    port: PORT || config.dev.port,
-    open: config.dev.autoOpenBrowser, // 调试时自动打开浏览器
-    overlay: config.dev.errorOverlay
-      ? { warnings: false, errors: true }
-      : false, // warning 和 error 都要显示
-    publicPath: config.dev.assetsPublicPath,
-    proxy: config.dev.proxyTable, // 接口代理
-    quiet: true, // 控制台是否禁止打印警告和错误
-    watchOptions: {
-      poll: config.dev.poll, // 文件系统检测改动
-    }
-  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
@@ -68,33 +38,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         to: config.dev.assetsSubDirectory,
         ignore: ['.*'] // 忽略.*的文件
       }
-    ])
+    ]),
+    new FriendlyErrorsPlugin()
   ]
-});
-
-module.exports = new Promise((resolve, reject) => {
-  portfinder.basePort = process.env.PORT || config.dev.port;
-
-  // 查找端口号
-  portfinder.getPort((err, port) => {
-    if (err) {
-      reject(err)
-    } else {
-      // 端口被占用时就重新设置evn和devServer的端口
-      process.env.PORT = port;
-      devWebpackConfig.devServer.port = port;
-
-      // Add FriendlyErrorsPlugin 友好地输出信息
-      devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
-        compilationSuccessInfo: {
-          messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
-        },
-        onErrors: config.dev.notifyOnErrors
-          ? utils.createNotifierCallback()
-          : undefined
-      }));
-
-      resolve(devWebpackConfig);
-    }
-  })
-});
+})
