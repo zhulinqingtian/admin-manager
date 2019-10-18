@@ -1,38 +1,34 @@
 <template>
   <div>
-    <ul class="demo-upload-list" v-for="(item,index) in uploadList" :key="index">
-      <li v-if="item.status === 'finished'">
-        <img :src="item.url">
-        <div class="demo-upload-list-cover">
-          <Icon type="ios-eye-outline" @click.native="handleView(item.name)"></Icon>
-          <Icon type="ios-trash-outline" @click.native="handleRemove(item)"></Icon>
-          <Button @click="upload(item)">选择文件</Button>
-        </div>
-      </li>
-      <li v-else>
-        <Progress v-if="item.showProgress" :percent="item.percentage" hide-info></Progress>
-      </li>
-    </ul>
     <div class="content">
-      <!-- /api/upload/uploadImage -->
+      <!-- :before-upload="handleUpload" -->
       <Upload
-        ref="upload"
         multiple
-        action="/api/test/gxq/upload_imgs"
+        ref="upload"
+        enctype="multipart/form-data"
+        :headers="{'Content-Type': 'application/json;charset=UTF-8'}"
         :show-upload-list="false"
-        :default-file-list="defaultList"
-        :on-success="handleSuccess"
-        :format="['jpg','jpeg','png']"
-        :max-size="2048"
+        :format="['jpg', 'jpeg', 'png', 'gif']"
+        :max-size="1024"
         :on-format-error="handleFormatError"
         :on-exceeded-size="handleMaxSize"
-        :before-upload="handleBeforeUpload"
-      >
-        <Button icon="ios-cloud-upload-outline">选择文件</Button>
+        :on-success="uploadSuccess"
+        action="/api/test/gxq/upload_imgs">
+        <Button type="ghost" icon="ios-cloud-upload-outline">浏览</Button>
       </Upload>
+      <div v-for="(item, index) in file" :key="index">
+        <p>Upload file: {{ item.name }}</p>
+        <a href="javascript:;"  @click="detectFile(item.name)">X</a>
+        <Button style="margin-left:30px;"
+                size="small"
+                v-if="index === 0"
+                type="primary"
+                @click="upload"
+                :loading="loadingStatus">上传</Button>
+      </div>
 
       <Modal title="View Image" v-model="visible">
-        <img :src="'https://o5wwk8baw.qnssl.com/' + imgName + '/large'" v-if="visible" style="width: 100%">
+        <img :src="'c:/java/project/images/' + imgName + '.jpg'" v-if="visible" style="width: 100%">
       </Modal>
     </div>
   </div>
@@ -45,78 +41,64 @@ export default {
   data () {
     return {
       loadingStatus: false,
-      defaultList: [
-        {
-          'name': 'a42bdcc1178e62b4694c830f028db5c0',
-          'url': 'https://o5wwk8baw.qnssl.com/a42bdcc1178e62b4694c830f028db5c0/avatar'
-        },
-        {
-          'name': 'bc7521e033abdd1e92222d733590f104',
-          'url': 'https://o5wwk8baw.qnssl.com/bc7521e033abdd1e92222d733590f104/avatar'
-        }
-      ],
       imgName: '',
       visible: false,
-      uploadList: [],
-      imgList: []
+      uploadFile: [],
+      file: []
     }
   },
   computed: {},
   created: function () {
   },
   mounted () {
-    this.uploadList = this.$refs.upload.fileList
+
   },
   methods: {
-    upload () {
-      this.loadingStatus = true
-      setTimeout(() => {
-        this.uploadList = []
-        this.loadingStatus = false
-        this.$Message.success('Success')
-      }, 1500)
+    handleUpload (file) { // 上传文件前的事件钩子
+      console.log('---------- handleUpload:', file)
+      // 选择文件后 这里判断文件类型 保存文件 自定义一个keyid 值 方便后面删除操作
+      let keyID = Math.random().toString().substr(2)
+      file['keyID'] = keyID
+      // 保存文件到总展示文件数据里
+      this.file.push(file)
+      // 保存文件到需要上传的文件数组里
+      this.uploadFile.push(file)
+      // 返回 falsa 停止自动上传 我们需要手动上传
+      return false
     },
 
-    handleView (name) {
-      this.imgName = name
-      this.visible = true
+    detectFile (keyID) { // 删除文件
+      // 删除总展示文件里的当前文件
+      console.log('---------- detectFile')
+      this.file = this.file.filter(item => {
+        return item.name !== name
+      })
+      // 删除需要上传文件数据里的当前文件
+      this.uploadFile = this.uploadFile.filter(item => {
+        return item.KeyID !== keyID
+      })
     },
-    handleRemove (file) {
-      const fileList = this.$refs.upload.fileList
-      this.$refs.upload.fileList.splice(fileList.indexOf(file), 1)
-    },
-    handleSuccess (response, file) {
-      // file.url = 'https://o5wwk8baw.qnssl.com/7eb99afb9d5f317c912f08b5212fd69a/avatar'
-      // file.name = '7eb99afb9d5f317c912f08b5212fd69a'
 
-      if (response.status === 'OK') {
-        // this.img = response.data
-        this.$Message.success('上传成功')
-        console.log('response.data:', response.data);
-      } else {
-        this.$Message.error('上传失败')
+    handleFormatError () {
+      this.$Message.warning('不支持上传该类型文件,支持的类型：gif、jpg、jpeg、png')
+    },
+    handleMaxSize () {
+      this.$Message.warning('最大可上传1MB文件')
+    },
+
+    upload () { // 上传文件
+      console.log('---------- upload')
+      for (let i = 0; i < this.uploadFile.length; i++) {
+        let item = this.file[i]
+        this.$refs.upload.post(item)
       }
     },
-    handleFormatError (file) {
-      this.$Notice.warning({
-        title: '文件格式错误',
-        desc: 'File format of ' + file.name + ' is incorrect, please select jpg or png.'
-      })
-    },
-    handleMaxSize (file) {
-      this.$Notice.warning({
-        title: '超出文件大小限制',
-        desc: 'File  ' + file.name + ' is too large, no more than 2M.'
-      })
-    },
-    handleBeforeUpload (file) {
-      this.uploadList.push(file)
-      console.log('file:', this.uploadList)
-      const check = this.uploadList.length < 5
-      if (!check) {
-        return this.$Notice.warning({title: '最多上传5个文件.'})
-      }
-      return false // 取消自动上传,手动控制上传
+
+    uploadSuccess (res, file, fileList) { // 文件上传回调 上传成功后删除待上传文件
+      console.log('---------- uploadSuccess')
+      console.log('res:', res)
+      console.log('file:', file)
+      console.log('fileList:', fileList)
     }
   }
 }

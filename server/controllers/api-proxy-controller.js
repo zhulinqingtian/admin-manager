@@ -23,7 +23,7 @@ exports.proxy = function (req, res) {
   }
 
   // 代理跳转
-  if (req.path.indexOf('/api/test') === 0) {
+  if (req.path.indexOf('/api/test') > -1) {
     options.url = apiServerUrl + req.path.replace('/api/test', '')
   }
 
